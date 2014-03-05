@@ -64,15 +64,6 @@ class Proxy {
      */
     public function forward($url = '')
     {
-        // build the correct url
-        if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on")
-        {
-            $url = "https://" . $this->config["server"] . ":" . $this->config["https_port"] . "/" . ltrim($url, "/");
-        } 
-        else 
-        {
-            $url = "http://" . $this->config["server"] . ":" . $this->config["http_port"] . "/" . ltrim($url, "/");
-        }
         
         // set url
         curl_setopt($this->ch, CURLOPT_URL, $url);
